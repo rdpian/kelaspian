@@ -1,0 +1,96 @@
+---
+title: 02. Instalasi & Setup Server
+description: Panduan langkah demi langkah mendaftar akun Moodiy dan melakukan deploy server Moodle pertama kamu secara gratis.
+sidebar:
+  order: 2
+---
+
+import MarkAsDone from '../../../components/MarkAsDone.astro';
+
+Pada bab kedua ini, kita akan langsung mempraktikkan proses pembuatan server Moodle berbasis cloud menggunakan platform **Moodiy**. Seluruh proses dilakukan secara visual (*GUI*) tanpa perlu mengetik perintah Linux atau mengolah database manual.
+
+---
+
+## 📹 Video Tutorial Instalasi
+
+Silakan tonton video langkah-langkah *deploy* Moodle secara instan berikut sebelum mempraktikkannya:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; margin-bottom: 1.5rem;">
+  <iframe 
+    src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+    title="Panduan Instalasi Moodle di Moodiy"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+---
+
+## 🎯 Target Pembelajaran
+
+Setelah menyelesaikan bab ini, kamu diharapkan dapat:
+* Membuat dan memverifikasi akun gratis di Moodiy.
+* Melakukan *deployment* instans Moodle baru dalam beberapa klik.
+* Mengakses dasbor Administrator Moodle pertama kali.
+
+---
+
+## 🚀 Langkah 1: Pendaftaran Akun Moodiy
+
+1. Buka browser dan kunjungi situs resmi [Moodiy](https://moodiy.com) (atau platform penyedia Moodle instan pilihanmu).
+2. Klik tombol **Sign Up** atau **Mulai Gratis**.
+3. Isi formulir pendaftaran:
+   * **Nama Lengkap**
+   * **Alamat Email Aktif**
+   * **Kata Sandi**
+4. Cek kotak masuk email kamu, lalu klik tautan konfirmasi untuk mengaktifkan akun.
+
+---
+
+## ⚙️ Langkah 2: Membuat Situs Moodle Baru
+
+Setelah berhasil masuk (*login*) ke dasbor Moodiy:
+
+1. Pilih menu **Create New Site** / **Tambah Situs Baru**.
+2. Isikan identitas situs pembelajaran kamu:
+   * **Subdomain:** Tentukan nama unik untuk URL sekolah/kelas kamu (contoh: `kelaspian.moodiy.com`).
+   * **Nama Situs:** Masukkan nama LMS (contoh: *Portal Pembelajaran Digital SDN 1*).
+   * **Versi Moodle:** Pilih versi *LTS (Long Term Support)* terstabil yang direkomendasikan.
+3. Klik tombol **Deploy Now** atau **Buat Situs**.
+
+> ⏱️ **Proses otomatisasi:** Sistem Moodiy akan menyiapkan server, database, dan file sistem Moodle secara otomatis dalam waktu 1–3 menit.
+
+---
+
+## 🔑 Langkah 3: Login Pertama sebagai Administrator
+
+1. Setelah status situs berubah menjadi **Active**, sistem akan menampilkan:
+   * **URL Situs:** `https://nama-situs-kamu.moodiy.com`
+   * **Username Admin:** `admin`
+   * **Password Admin:** *(Password sementara yang digenerate sistem)*
+2. Klik tautan URL situs kamu untuk membuka Moodle.
+3. Klik tombol **Log in** di pojok kanan atas.
+4. Masukkan username dan password administrator yang didapatkan dari Moodiy.
+5. **Penting:** Segera ganti password sementara kamu melalui menu *Profile > Edit Profile > Change Password* demi keamanan.
+
+---
+
+## 📋 Ceklis Keberhasilan
+
+Pastikan kamu sudah menyelesaikan seluruh verifikasi dasar berikut sebelum melangkah ke bab berikutnya:
+
+- [ ] Akun Moodiy terverifikasi.
+- [ ] Situs Moodle baru berhasil dibuat dan berstatus aktif.
+- [ ] Berhasil masuk ke dasbor Administrator Moodle.
+- [ ] Password default admin sudah diganti dengan yang baru.
+
+---
+
+## 💡 Langkah Selanjutnya
+
+Selamat! Situs Moodle milikmu sekarang sudah aktif dan siap digunakan. 
+
+Pada bab berikutnya (**03. Konfigurasi Dasar & Tampilan**), kita akan mengubah pengaturan bahasa ke Bahasa Indonesia, menyesuaikan logo sekolah, serta mengatur zona waktu server.
+
+<MarkAsDone lessonId="moodle-moodiy-02" />
