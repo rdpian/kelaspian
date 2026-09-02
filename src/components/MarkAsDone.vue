@@ -1,6 +1,7 @@
 <template>
   <div class="mark-done-container">
     <button 
+      type="button"
       @click="toggleComplete" 
       :class="['done-btn', { completed: isCompleted }]"
     >
@@ -21,10 +22,10 @@ const props = defineProps({
 });
 
 const isCompleted = ref(false);
-
 const STORAGE_KEY = 'ecourse_completed_lessons';
 
 const getCompletedLessons = () => {
+  if (typeof window === 'undefined') return [];
   const data = localStorage.getItem(STORAGE_KEY);
   return data ? JSON.parse(data) : [];
 };
@@ -35,6 +36,7 @@ onMounted(() => {
 });
 
 const toggleComplete = () => {
+  if (typeof window === 'undefined') return;
   let completed = getCompletedLessons();
   
   if (isCompleted.value) {
