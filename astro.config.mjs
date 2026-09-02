@@ -5,10 +5,12 @@ import vue from '@astrojs/vue';
 
 export default defineConfig({
   // Ganti 'username' dengan nama akun GitHub milikmu
-  site: 'https://rdpian.github.io',
-  base: '/kelaspian', 
+  site: 'https://kelas.rdpian.my.id',
+  base: '/', 
 
-  integrations: [starlight({
+  integrations: [
+vue(),
+starlight({
     title: 'Kelas Pian',
     social: [
       {
