@@ -1,0 +1,101 @@
+---
+interface Props {
+  lessonId: string;
+}
+
+const { lessonId } = Astro.props;
+---
+
+<div class="mark-done-container" data-lesson-id={lessonId}>
+  <button type="button" class="done-btn" id={`btn-${lessonId}`}>
+    <span class="btn-text">Tandai Selesai</span>
+  </button>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    initButtons();
+  });
+
+  // Fallback jika astro:page-load tidak dipanggil
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initButtons);
+  } else {
+    initButtons();
+  }
+
+  function initButtons() {
+    const STORAGE_KEY = 'ecourse_completed_lessons';
+    const containers = document.querySelectorAll('.mark-done-container');
+
+    containers.forEach((container) => {
+      const lessonId = container.getAttribute('data-lesson-id');
+      const btn = container.querySelector('.done-btn');
+      const btnText = container.querySelector('.btn-text');
+
+      if (!lessonId || !btn || !btnText) return;
+
+      const getCompleted = () => {
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+      };
+
+      const updateUI = (isDone) => {
+        if (isDone) {
+          btn.classList.add('completed');
+          btnText.textContent = '✓ Modul Selesai';
+        } else {
+          btn.classList.remove('completed');
+          btnText.textContent = 'Tandai Selesai';
+        }
+      };
+
+      // Set initial status
+      let completed = getCompleted();
+      updateUI(completed.includes(lessonId));
+
+      // Click listener
+      btn.onclick = () => {
+        let currentList = getCompleted();
+        if (currentList.includes(lessonId)) {
+          currentList = currentList.filter((id) => id !== lessonId);
+          updateUI(false);
+        } else {
+          currentList.push(lessonId);
+          updateUI(true);
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(currentList));
+      };
+    });
+  }
+</script>
+
+<style>
+  .mark-done-container {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+  }
+
+  .done-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--sl-color-accent);
+    background-color: transparent;
+    color: var(--sl-color-accent-high);
+  }
+
+  .done-btn:hover {
+    background-color: var(--sl-color-accent-low);
+  }
+
+  .done-btn.completed {
+    background-color: #10b981;
+    color: #ffffff;
+    border-color: #10b981;
+  }
+</style>
