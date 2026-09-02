@@ -9,17 +9,25 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Kelas Pian',
-      social: {
-        github: 'https://github.com/rdpian/kelaspian',
-      },
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/rdpian/kelaspian',
+        },
+      ],
       sidebar: [
         {
           label: 'Kelas Moodle & Moodiy',
-          autogenerate: { directory: 'moodle-moodiy' },
+          items: [
+            { autogenerate: { directory: 'moodle-moodiy' } }
+          ],
         },
         {
           label: 'Kelas Pemrograman Micro:bit',
-          autogenerate: { directory: 'microbit' },
+          items: [
+            { autogenerate: { directory: 'microbit' } }
+          ],
         },
       ],
     }),
